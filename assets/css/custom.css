@@ -165,3 +165,22 @@ body{color:#222831}h1,h2,h3,h4,h5,h6{color:#222831}
 .stat-box .big-num{font-size:3rem;color:#222831}.stat-lbl{color:#393E46;font-weight:500;margin-top:6px}
 .stat-dark{background:#222831}.stat-dark .big-num{color:#DFD0B8}.stat-dark .stat-lbl{color:#DFD0B8}
 @media(max-width:767px){.stat-box{padding:20px}.stat-box .big-num{font-size:2.5rem}}
+/* v6: photo backgrounds + texture */
+.bg-photo{position:relative;overflow:hidden;isolation:isolate}
+.bg-photo:before{content:"";position:absolute;inset:0;z-index:-2;background-size:cover;background-repeat:no-repeat}
+.bg-photo:after{content:"";position:absolute;inset:0;z-index:-1}
+.bg-laptop:before{background-image:url(../imgs/cris-laptop.webp);background-position:right 30% top 20%}
+.bg-laptop:after{background:linear-gradient(100deg,rgba(34,40,49,.97) 0%,rgba(34,40,49,.9) 45%,rgba(57,62,70,.55) 100%)}
+.bg-stylus:before{background-image:url(../imgs/cris-stylus.webp);background-position:center 30%}
+.bg-stylus:after{background:radial-gradient(ellipse at center,rgba(34,40,49,.82),rgba(34,40,49,.94) 70%)}
+.card-photo picture{position:absolute;inset:0}.card-photo picture img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.resume-photo{aspect-ratio:1/1;object-fit:cover;box-shadow:0 12px 30px rgba(34,40,49,.15)}
+/* grain */
+body:after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:9999;opacity:.06;
+background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .13 0 0 0 0 .16 0 0 0 0 .19 0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");background-size:160px 160px}
+/* paper texture on cream sections */
+.bg-soft,.bg-accent-soft,.stat-box:not(.stat-dark),.hero-badge{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='.035 .9' numOctaves='3' seed='4'/><feColorMatrix values='0 0 0 0 .58 0 0 0 0 .54 0 0 0 0 .47 0 0 0 .18 0'/></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>")}
+.card-dark:not(.bg-photo),.footer-home1,.stat-dark,.award-card{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='d'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/><feColorMatrix values='0 0 0 0 .87 0 0 0 0 .82 0 0 0 0 .72 0 0 0 .07 0'/></filter><rect width='100%' height='100%' filter='url(%23d)'/></svg>")!important}
+.award-card{background-color:#222831!important}
+@media(max-width:767px){.bg-laptop:before{background-position:70% 15%}.bg-laptop:after{background:rgba(34,40,49,.9)}body:after{opacity:.045}}
+@media(max-width:767px){.card-photo{min-height:480px}.card-photo picture img{object-position:center 15%}.photo-stats{flex-direction:row;left:12px;right:12px;bottom:12px;gap:8px}.stat-pill{padding:10px 12px}.stat-pill strong{font-size:1.25rem}.stat-pill span{font-size:.7rem}}
