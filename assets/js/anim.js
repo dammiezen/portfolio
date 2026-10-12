@@ -15,14 +15,20 @@ document.querySelectorAll('.count').forEach(function(e){cio.observe(e)});
 })();
 (function(){
 var vids=[].slice.call(document.querySelectorAll('video.card-vid'));
-var rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-function load(v){if(!v.src){v.src=v.dataset.src;}}
-var io=('IntersectionObserver' in window)?new IntersectionObserver(function(en){en.forEach(function(x){var v=x.target;v._vis=x.isIntersecting;if(x.isIntersecting&&!rm&&!window._vidOpen){load(v);v.play().catch(function(){})}else{v.pause()}})},{threshold:.35}):null;
-vids.forEach(function(v){if(io)io.observe(v)});
+/* Cris wants these muted previews to autoplay regardless of prefers-reduced-motion */
+function load(v){if(!v.getAttribute('src')){v.src=v.dataset.src;}}
+function tryPlay(v){v.muted=true;v.defaultMuted=true;v.playsInline=true;load(v);var pr=v.play();if(pr&&pr.catch)pr.catch(function(){v._needsGesture=true;});}
+vids.forEach(function(v){v.muted=true;v.setAttribute('muted','');v.setAttribute('playsinline','');v.setAttribute('loop','');});
+var io=('IntersectionObserver' in window)?new IntersectionObserver(function(en){en.forEach(function(x){var v=x.target;v._vis=x.isIntersecting;if(x.isIntersecting&&!window._vidOpen){tryPlay(v)}else{v.pause()}})},{threshold:.25}):null;
+if(io)vids.forEach(function(v){io.observe(v)});else vids.forEach(tryPlay);
+function retry(){vids.forEach(function(v){if(v._vis&&v.paused&&!window._vidOpen)tryPlay(v)});}
+['pointerdown','touchstart','keydown','scroll'].forEach(function(ev){addEventListener(ev,retry,{passive:true})});
+document.addEventListener('visibilitychange',function(){if(!document.hidden)retry()});
+var rm=false;
 var m=document.getElementById('vidModal');if(!m||!window.bootstrap)return;var p=document.getElementById('vidPlayer'),t=document.getElementById('vidTitle'),bm=new bootstrap.Modal(m);
 document.querySelectorAll('button.vid-thumb').forEach(function(b){b.addEventListener('click',function(){window._vidOpen=true;vids.forEach(function(v){v.pause()});var cv=b.querySelector('video');
 p.src=b.dataset.video;p.poster=cv.poster;p.muted=false;p.currentTime=0;t.textContent=b.dataset.title+' · Video testimonial';bm.show();p.play().catch(function(){})})});
-m.addEventListener('hidden.bs.modal',function(){p.pause();p.removeAttribute('src');p.load();window._vidOpen=false;vids.forEach(function(v){if(v._vis&&!rm){load(v);v.play().catch(function(){})}})});
+m.addEventListener('hidden.bs.modal',function(){p.pause();p.removeAttribute('src');p.load();window._vidOpen=false;vids.forEach(function(v){if(v._vis)tryPlay(v)})});
 })();
 (function(){var f=document.querySelector('[data-flow]');if(!f)return;var steps=[].slice.call(f.querySelectorAll('.flow-step'));
 if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){f.style.setProperty('--p',1);steps.forEach(function(s){s.classList.add('on')});return;}
