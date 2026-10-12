@@ -210,3 +210,4 @@ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000
 .bars.on .bar i{width:var(--w)}.kpi-note{color:rgba(223,208,184,.55)}.case-foot{color:#DFD0B8;border-top:1px solid rgba(223,208,184,.15);padding-top:20px}
 @media (prefers-reduced-motion:reduce){.bar i{width:var(--w)}}
 @media(max-width:767px){.case-card{padding:28px}}
+.display-head.h-sub{font-size:clamp(1.8rem,3vw,2.4rem)!important}
