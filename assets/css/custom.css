@@ -211,3 +211,17 @@ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000
 @media (prefers-reduced-motion:reduce){.bar i{width:var(--w)}}
 @media(max-width:767px){.case-card{padding:28px}}
 .display-head.h-sub{font-size:clamp(1.8rem,3vw,2.4rem)!important}
+/* pinned horizontal scroll */
+.hs{position:relative}
+.hs-sticky{position:relative}
+.hs-pinned .hs-sticky{position:sticky;overflow:hidden;padding:14px 4px 0}
+.hs-track.row{flex-wrap:nowrap;margin-left:0;margin-right:0;will-change:transform}
+.hs-track.row>[class*="col"]{flex:0 0 auto;width:min(460px,82vw);max-width:none;padding-left:0;padding-right:20px}
+.hs-track.row.g-4{--bs-gutter-x:0}
+.hs-progress{height:4px;background:#E6DED1;border-radius:4px;margin-top:22px;overflow:hidden;display:none}
+.hs-progress i{display:block;height:100%;background:linear-gradient(90deg,#222831,#948979);transform:scaleX(0);transform-origin:left}
+.hs-pinned .hs-progress{display:block}
+.hs-native .hs-track.row{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:14px;scrollbar-width:thin}
+.hs-native .hs-track.row>[class*="col"]{scroll-snap-align:start;width:min(460px,84vw)}
+.hs-native .hs-progress{display:none}
+.hs-track .mb-6{margin-bottom:0!important}
