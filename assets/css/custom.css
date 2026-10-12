@@ -1,0 +1,6 @@
+.brand-mark{display:inline-flex;width:40px;height:40px;border-radius:50%;background:var(--bs-primary);color:#fff;align-items:center;justify-content:center;font-weight:700}
+.list-check{list-style:none;padding-left:0}.list-check li{margin-bottom:.4rem}
+.ticker{overflow:hidden;white-space:nowrap}.ticker-track{display:inline-flex;gap:2rem;align-items:center;animation:tick 60s linear infinite}
+.ticker-item{font-size:1.5rem;font-weight:600}@keyframes tick{to{transform:translateX(-50%)}}
+.pt-250{padding-top:160px!important}
+header .navbar{position:absolute;top:0;left:0;right:0}
