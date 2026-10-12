@@ -34,3 +34,26 @@ header .navbar{position:absolute;top:0;left:0;right:0;background:#fff}
 .footer-home1{background:#111!important}.footer-home1 .text-primary{color:#7fc4a0!important}
 #preloader,.cursor,.follower{display:none!important}
 @media(max-width:767px){.card-dark{padding:28px;border-radius:22px}.card-photo{min-height:360px}.photo-stats{flex-direction:column;gap:8px}.py-6{padding-top:64px;padding-bottom:64px}.pt-hero,.pt-250{padding-top:120px!important}.fs-120{font-size:2.2rem!important}.fs-250{font-size:3.5rem!important}.ds-3{font-size:2.2rem!important}.logo-nav{height:30px}}
+/* animations */
+.js-anim .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.js-anim .reveal.in{opacity:1;transform:none}
+.hero-title .line{display:block;opacity:0;transform:translateY(40px);animation:heroIn .9s cubic-bezier(.2,.7,.2,1) forwards}
+.hero-title .line:nth-child(2){animation-delay:.15s}.hero-title .line:nth-child(3){animation-delay:.3s}
+@keyframes heroIn{to{opacity:1;transform:none}}
+.ticker-track{animation:tick 40s linear infinite;will-change:transform}.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker{mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.soft-card,.card-portfolio,.p-5.border,.p-6.border{transition:transform .3s ease,box-shadow .3s ease,opacity .7s ease}
+.soft-card:hover,.p-5.border:hover,.p-6.border:hover{transform:translateY(-6px);box-shadow:0 14px 34px rgba(11,80,47,.12)}
+.btn{transition:transform .2s ease,box-shadow .2s ease,background .2s}.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
+.stat-pill{animation:floaty 5s ease-in-out infinite}.stat-pill:nth-child(2){animation-delay:-2.5s}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.card-photo img{transition:transform 1.2s ease}.card-photo:hover img{transform:scale(1.04)}
+.accordion-collapse.collapsing{transition:height .35s cubic-bezier(.2,.7,.2,1)}
+.award-card{background:linear-gradient(135deg,#0B502F,#13784a);color:#fff;border-radius:24px;padding:36px;position:relative;overflow:hidden}
+.award-card h3{color:#fff;font-weight:700;font-size:clamp(1.4rem,3vw,2.1rem)}
+.award-card .bi-trophy-fill{font-size:3rem;color:#d9f2e4;animation:floaty 4s ease-in-out infinite}
+.award-card:after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.08)}
+.hero-badge{display:inline-flex;gap:8px;align-items:center;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:8px 16px;font-size:.9rem;font-weight:500}
+.gallery img{width:100%;height:100%;object-fit:cover;border-radius:18px;transition:transform .4s}.gallery a{display:block;overflow:hidden;border-radius:18px;aspect-ratio:4/3}.gallery a:hover img{transform:scale(1.05)}
+@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.hero-title .line{opacity:1;transform:none}.js-anim .reveal{opacity:1;transform:none}}
+@media(max-width:767px){.stat-pill{animation:none}.award-card{padding:26px}}
