@@ -383,3 +383,25 @@ main>section>.container,main>section>div:not(.deco){position:relative;z-index:1}
 @media(max-width:767px){.py-6{padding-top:56px;padding-bottom:56px}.hs-btn{width:38px;height:38px}}
 .hs-track.row>[class*="col"]{width:min(480px,84vw)}
 .hs .xcard:not(.xcard-proj){min-height:250px}.xc-more{scrollbar-width:thin}
+/* v9 */
+section .mt-8:has(> [data-hs]),section .mt-8:has(> .hs){margin-top:56px}
+.job-feature{background:linear-gradient(90deg,rgba(148,137,121,.14),transparent);border-left:4px solid #948979;border-radius:12px;margin-top:1rem}
+.dz-tabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.dz-tabs button{border:1px solid rgba(148,137,121,.5);background:transparent;color:inherit;border-radius:999px;padding:7px 16px;font-size:14px;transition:.25s}
+.dz-tabs button small{opacity:.6;margin-left:4px}
+.dz-tabs button:hover,.dz-tabs button.active{background:#222831;color:#DFD0B8;border-color:#222831}
+[data-theme=dark] .dz-tabs button:hover,[data-theme=dark] .dz-tabs button.active{background:#DFD0B8;color:#222831;border-color:#DFD0B8}
+.dz-grid{columns:4 240px;column-gap:16px}
+.dz-item{display:block;break-inside:avoid;margin-bottom:16px;border-radius:14px;overflow:hidden;background:#EFE7DA;cursor:zoom-in;box-shadow:0 6px 20px rgba(34,40,49,.08)}
+[data-theme=dark] .dz-item{background:#393E46}
+.dz-item img{width:100%;height:auto;display:block;transition:transform .5s ease}
+.dz-item:hover img{transform:scale(1.06)}
+.dz-item.hide{display:none}
+.dz-lb{position:fixed;inset:0;z-index:2000;background:rgba(20,24,30,.94);display:flex;align-items:center;justify-content:center;padding:60px 70px}
+.dz-lb[hidden]{display:none}
+.dz-lb img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px}
+.dz-lb button{position:absolute;border:0;background:rgba(223,208,184,.15);color:#DFD0B8;width:46px;height:46px;border-radius:50%;font-size:20px}
+.dz-x{top:14px;right:14px}.dz-p{left:14px;top:50%}.dz-n{right:14px;top:50%}
+.dz-cap{position:absolute;bottom:12px;left:0;right:0;text-align:center;color:#DFD0B8;margin:0;font-size:14px}
+@media(max-width:575px){.dz-grid{columns:2;column-gap:10px}.dz-item{margin-bottom:10px}.dz-lb{padding:60px 10px}.dz-p,.dz-n{top:auto!important;bottom:40px}}
+.svc-group+.svc-group{margin-top:56px!important}

@@ -87,3 +87,13 @@ document.querySelectorAll('main>section').forEach(function(s,i){var d=document.c
  [sets[i%sets.length],sets[(i+3)%sets.length]].forEach(function(x,j){var h=x[0]==='spark'?spark:x[0]==='wave'?wave:'<div class="'+x[0]+'"></div>';var t=document.createElement('div');t.innerHTML=h;var el=t.firstChild;el.setAttribute('style',pos[x[1]]+(j?';animation-delay:-'+(i*1.7)+'s':''));d.appendChild(el)});
  s.insertBefore(d,s.firstChild)});
 })();
+/* v9 creative gallery */
+(function(){var g=document.querySelector('.dz-grid');if(!g)return;var items=[].slice.call(g.querySelectorAll('.dz-item')),lb=document.querySelector('.dz-lb'),im=lb.querySelector('img'),cap=lb.querySelector('.dz-cap'),cur=0;
+document.querySelectorAll('.dz-tabs button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.dz-tabs button').forEach(function(x){x.classList.remove('active')});b.classList.add('active');var f=b.dataset.f;items.forEach(function(i){i.classList.toggle('hide',f!=='*'&&i.dataset.c!==f)})})});
+function vis(){return items.filter(function(i){return !i.classList.contains('hide')})}
+function show(n){var v=vis();cur=(n+v.length)%v.length;var a=v[cur],i=a.querySelector('img');im.src=a.href;im.alt=i.alt;cap.textContent=i.alt.replace(/ social media design$/,'')+'  ·  '+(cur+1)+' / '+v.length}
+items.forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();lb.hidden=false;document.body.style.overflow='hidden';show(vis().indexOf(a))})});
+function close(){lb.hidden=true;document.body.style.overflow=''}
+lb.querySelector('.dz-x').onclick=close;lb.querySelector('.dz-p').onclick=function(){show(cur-1)};lb.querySelector('.dz-n').onclick=function(){show(cur+1)};
+lb.addEventListener('click',function(e){if(e.target===lb)close()});
+document.addEventListener('keydown',function(e){if(lb.hidden)return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1)})})();
