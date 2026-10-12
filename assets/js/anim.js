@@ -13,3 +13,6 @@ function count(el){var t=el.textContent.trim(),m=t.match(/^([^\d]*)([\d,]+)(.*)$
 var cio=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){count(x.target);cio.unobserve(x.target)}})},{threshold:.6});
 document.querySelectorAll('.count').forEach(function(e){cio.observe(e)});
 })();
+(function(){var m=document.getElementById('vidModal');if(!m||!window.bootstrap)return;var v=document.getElementById('vidPlayer'),t=document.getElementById('vidTitle'),bm=new bootstrap.Modal(m);
+document.querySelectorAll('.vid-thumb').forEach(function(b){b.addEventListener('click',function(){v.src=b.dataset.video;v.poster=b.querySelector('img').src;t.textContent=b.dataset.title+' · Video testimonial';bm.show();v.play().catch(function(){})})});
+m.addEventListener('hidden.bs.modal',function(){v.pause();v.removeAttribute('src');v.load()});})();
