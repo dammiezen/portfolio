@@ -184,3 +184,9 @@ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000
 .award-card{background-color:#222831!important}
 @media(max-width:767px){.bg-laptop:before{background-position:70% 15%}.bg-laptop:after{background:rgba(34,40,49,.9)}body:after{opacity:.045}}
 @media(max-width:767px){.card-photo{min-height:480px}.card-photo picture img{object-position:center 15%}.photo-stats{flex-direction:row;left:12px;right:12px;bottom:12px;gap:8px}.stat-pill{padding:10px 12px}.stat-pill strong{font-size:1.25rem}.stat-pill span{font-size:.7rem}}
+.socials{display:flex;flex-wrap:wrap;gap:10px}
+.socials a{width:42px;height:42px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:#222831;color:#DFD0B8;transition:transform .2s,background .2s}
+.socials a:hover{transform:translateY(-3px);background:#948979;color:#222831}
+.socials svg{width:20px;height:20px}
+.oj-badge{font-weight:700;font-size:.8rem;letter-spacing:.02em;font-family:'Poppins',sans-serif}
+.socials-dark a{background:#393E46;color:#DFD0B8}.socials-dark a:hover{background:#DFD0B8;color:#222831}
